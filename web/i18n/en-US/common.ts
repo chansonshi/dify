@@ -157,6 +157,9 @@ const translation = {
     apiBasedExtension: 'API Extension',
   },
   account: {
+    account: 'Account',
+    myAccount: 'My Account',
+    studio: 'Dify Studio',
     avatar: 'Avatar',
     name: 'Name',
     email: 'Email',

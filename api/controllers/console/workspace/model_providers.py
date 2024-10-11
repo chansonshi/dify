@@ -125,6 +125,10 @@ class ModelProviderIconApi(Resource):
     """
     Get model provider icon
     """
+
+    @setup_required
+    @login_required
+    @account_initialization_required
     def get(self, provider: str, icon_type: str, lang: str):
         model_provider_service = ModelProviderService()
         icon, mimetype = model_provider_service.get_model_provider_icon(
