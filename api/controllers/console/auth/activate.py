@@ -7,7 +7,7 @@ from constants.languages import supported_language
 from controllers.console import api
 from controllers.console.error import AlreadyActivateError
 from extensions.ext_database import db
-from libs.helper import StrLen, email, get_remote_ip, timezone
+from libs.helper import StrLen, email, extract_remote_ip, timezone
 from models.account import AccountStatus, Tenant
 from services.account_service import AccountService, RegisterService
 
@@ -68,7 +68,7 @@ class ActivateApi(Resource):
         account.initialized_at = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
         db.session.commit()
 
-        token = AccountService.login(account, ip_address=get_remote_ip(request))
+        token = AccountService.login(account, ip_address=extract_remote_ip(request))
 
         return {"result": "success", "data": token}
 
